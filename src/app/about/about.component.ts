@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { timer, fromEvent } from 'rxjs'
 
 @Component({
   selector: 'about',
@@ -10,6 +11,8 @@ export class AboutComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
+
   }
 
 }
