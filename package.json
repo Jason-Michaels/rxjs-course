@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "./node_modules/.bin/ng serve  --proxy-config ./proxy.json",
-    "start-pod": "./node_modules/.bin/ng serve --port 3000 --host 0.0.0.0 --disableHostCheck=true",
+    "start-pod": "./node_modules/.bin/ng serve --port 3000 --host 0.0.0.0 --disableHostCheck=true --proxy-config ./proxy.json",
     "server": "./node_modules/.bin/ts-node ./server/server.ts",
     "build": "ng build",
     "test": "ng test",
