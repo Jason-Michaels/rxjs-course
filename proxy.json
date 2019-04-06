@@ -1,9 +1,9 @@
 {
   "/api": {
     "target":  {
-       "host": "9000-be6584a3-cbb0-481e-94ee-ca97cc4252c9.ws-eu0.gitpod.io",
-       "protocol": "https:",
-       "port": 443
+       "host": "localhost",
+       "protocol": "http:",
+       "port": 9000
      },
      "secure": false,
      "changeOrigin": true,
