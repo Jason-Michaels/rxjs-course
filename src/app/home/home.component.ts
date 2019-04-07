@@ -32,15 +32,17 @@ export class HomeComponent implements OnInit {
 
       this.beginnerCourses$ = http$
         .pipe(
-            map(courses => courses
-                .filter(course => course.category == 'BEGINNER'))
+            map(courses => courses)
+                    ,filter(course => course == '')
         );
 
-      this.advancedCourses$ = http$
+        console.log(this.advancedCourses$)
+
+     /* this.advancedCourses$ = http$
         .pipe(
             map(courses => courses
                 .filter(course => course.category == 'ADVANCED'))
-        );
+        ); */
 
       courses$.subscribe(
         courses => {
