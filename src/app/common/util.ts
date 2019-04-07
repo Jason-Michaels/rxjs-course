@@ -6,7 +6,11 @@ const api_url: string = '9000-be6584a3-cbb0-481e-94ee-ca97cc4252c9.ws-eu0.gitpod
 
 export function createHttpObservable(url:string) {
   return Observable.create(observer => {
-      fetch(url)
+
+      const controller = new AbortController();
+      const signal = controller.signal;
+
+      fetch(url, {signal})
       //fetch(cors_url + api_url + url)
         .then(response => {
           return response.json();
@@ -18,5 +22,8 @@ export function createHttpObservable(url:string) {
         .catch(err => {
           observer.error(err);
         })
+
+        return () => controller.abort();
+
     });
 }

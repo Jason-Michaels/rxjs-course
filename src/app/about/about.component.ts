@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Observable, noop, of, concat } from 'rxjs'
+import { Observable, noop, of, concat, interval  } from 'rxjs'
 import { map } from 'rxjs/operators';
+import { createHttpObservable } from '../common/util';
 
 @Component({
   selector: 'about',
@@ -13,12 +14,10 @@ export class AboutComponent implements OnInit {
 
   ngOnInit() {
 
-    const source1$ = of(1,2,3);
-    const source2$ = of(4,5,6);
-    const source3$ = of(7,8,9);
+    const http$: Observable<Array<any>> = createHttpObservable('/api/courses');
+    const sub = http$.subscribe(console.log);
 
-    const result$ = concat(source1$, source2$, source3$)
-    result$.subscribe(console.log)
+    setTimeout(() => sub.unsubscribe(), 0)
 
   }
 
