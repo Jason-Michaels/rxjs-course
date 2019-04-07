@@ -13,7 +13,13 @@ export function createHttpObservable(url:string) {
       fetch(url, {signal})
       //fetch(cors_url + api_url + url)
         .then(response => {
-          return response.json();
+          if (response.ok) {
+            return response.json();
+          } else {
+            observer.error('Request failed with status code: ' + response.status);
+
+          }
+
         })
         .then(body => {
           observer.next(body);
