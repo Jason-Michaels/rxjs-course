@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Course} from "../model/course";
 import { Observable, noop } from 'rxjs';
-import { map, filter} from 'rxjs/operators';
+import { map, shareReplay, tap } from 'rxjs/operators';
 import { createHttpObservable } from '../common/util';
 
 @Component({
@@ -25,7 +25,9 @@ export class HomeComponent implements OnInit {
 
       const courses$ = http$
         .pipe(
-          map(res => res["payload"])
+          tap(() => console.log('HTTP request executed')),
+          map(res => res["payload"]),
+          shareReplay()
         );
 
 
